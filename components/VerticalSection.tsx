@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Vertical } from '@/types';
 import { CitationsPanel } from './CitationsPanel';
 
@@ -10,11 +10,22 @@ interface VerticalSectionProps {
  * Section displaying vertical definition and tax type information
  */
 export const VerticalSection: React.FC<VerticalSectionProps> = ({ vertical }) => {
+  const [showNativeLang, setShowNativeLang] = useState(true);
   const hasCitations = vertical.definition.citations && vertical.definition.citations.length > 0;
 
   return (
     <div className="card">
-      <h2 className="section-title">Vertical</h2>
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="section-title">Vertical</h2>
+        {hasCitations && (
+          <button
+            onClick={() => setShowNativeLang(!showNativeLang)}
+            className="text-sm text-primary-600 hover:text-primary-700 font-medium px-3 py-1 border border-primary-300 rounded-md hover:bg-primary-50 transition-colors"
+          >
+            {showNativeLang ? 'Hide Native Lang Citations' : 'Show Native Lang Citations'}
+          </button>
+        )}
+      </div>
       
       <div className="mb-4">
         <p className="text-sm text-gray-500 mb-1">Label</p>
@@ -46,7 +57,7 @@ export const VerticalSection: React.FC<VerticalSectionProps> = ({ vertical }) =>
 
       {hasCitations && (
         <div className="mt-6">
-          <CitationsPanel citations={vertical.definition.citations} />
+          <CitationsPanel citations={vertical.definition.citations} showNativeLang={showNativeLang} />
         </div>
       )}
     </div>

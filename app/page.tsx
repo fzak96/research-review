@@ -6,7 +6,6 @@ import { JurisdictionSummary } from '@/components/JurisdictionSummary';
 import { VerticalSection } from '@/components/VerticalSection';
 import { ProvisionSection } from '@/components/ProvisionSection';
 import { SourcesSection } from '@/components/SourcesSection';
-import { DownloadPDFButton } from '@/components/DownloadPDFButton';
 import { JSONUploader } from '@/components/JSONUploader';
 
 /**
@@ -56,21 +55,6 @@ export default function Home() {
                 <span className="text-gray-400">•</span>
                 <span className="capitalize">{verticalLabel}</span>
               </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <DownloadPDFButton data={data} />
-              {data.evaluation && (
-                <div className="text-right">
-                  <p className="text-xs text-gray-500 mb-1">Confidence</p>
-                  <span className={`inline-block px-3 py-1 rounded-md text-sm font-medium ${
-                    data.evaluation.confidence_score === 'HIGH' 
-                      ? 'bg-green-100 text-green-700' 
-                      : 'bg-yellow-100 text-yellow-700'
-                  }`}>
-                    {data.evaluation.confidence_score}
-                  </span>
-                </div>
-              )}
             </div>
           </div>
         </div>

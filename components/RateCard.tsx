@@ -6,12 +6,13 @@ import { CitationsPanel } from './CitationsPanel';
 interface RateCardProps {
   rate: StandardRate | ReducedRate;
   isStandard?: boolean;
+  showNativeLang: boolean;
 }
 
 /**
  * Card displaying rate information with applies-to list and citations
  */
-export const RateCard: React.FC<RateCardProps> = ({ rate, isStandard = false }) => {
+export const RateCard: React.FC<RateCardProps> = ({ rate, isStandard = false, showNativeLang }) => {
   const rateLabel = isStandard ? 'Standard Rate' : (rate as ReducedRate).name;
   const rateValue = `${rate.amount}${rate.unit || '%'}`;
   const conditions = (rate as ReducedRate).conditions || [];
@@ -30,18 +31,13 @@ export const RateCard: React.FC<RateCardProps> = ({ rate, isStandard = false }) 
             )}
           </div>
         </div>
-        {isStandard && (
-          <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-md text-sm font-medium">
-            Standard
-          </span>
-        )}
       </div>
 
       <AppliesToList items={rate.applies_to} />
 
       {conditions.length > 0 && (
         <div className="mt-4">
-          <p className="text-sm text-gray-500 mb-2">Conditions</p>
+          <p className="text-base font-semibold text-gray-900 mb-2">Conditions</p>
           <ul className="list-disc list-inside space-y-1 text-gray-700">
             {conditions.map((condition, index) => (
               <li key={index} className="leading-relaxed">
@@ -52,7 +48,7 @@ export const RateCard: React.FC<RateCardProps> = ({ rate, isStandard = false }) 
         </div>
       )}
 
-      <CitationsPanel citations={rate.citations} />
+      <CitationsPanel citations={rate.citations} showNativeLang={showNativeLang} />
     </div>
   );
 };

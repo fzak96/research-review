@@ -71,18 +71,11 @@ export const JSONUploader: React.FC<JSONUploaderProps> = ({
 
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-      <div className="flex items-center justify-between mb-3">
-        <div>
-          <h3 className="text-sm font-semibold text-gray-900 mb-1">Load JSON Data</h3>
-          <p className="text-xs text-gray-500">
-            Upload a tax research JSON file to generate the review UI
-          </p>
-        </div>
-        {currentData && (
-          <span className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">
-            ✓ Loaded
-          </span>
-        )}
+      <div className="mb-3">
+        <h3 className="text-sm font-semibold text-gray-900 mb-1">Load JSON Data</h3>
+        <p className="text-xs text-gray-500">
+          Upload a tax research JSON file to generate the review UI
+        </p>
       </div>
 
       <div className="flex items-center gap-3">

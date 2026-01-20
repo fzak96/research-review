@@ -3,10 +3,11 @@
  */
 
 export interface Citation {
-  source_id: string;
-  pinpoint: string;
+  docId: string;
+  path: string;
+  translated_path: string;
   quote: string;
-  translated_quote?: string;
+  translated_quote: string;
 }
 
 export interface Jurisdiction {
