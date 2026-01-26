@@ -1,7 +1,6 @@
 import React from 'react';
 import { StandardRate, ReducedRate } from '@/types';
 import { AppliesToList } from './AppliesToList';
-import { CitationsPanel } from './CitationsPanel';
 
 interface RateCardProps {
   rate: StandardRate | ReducedRate;
@@ -33,7 +32,7 @@ export const RateCard: React.FC<RateCardProps> = ({ rate, isStandard = false, sh
         </div>
       </div>
 
-      <AppliesToList items={rate.applies_to} />
+      <AppliesToList items={rate.applies_to} showNativeLang={showNativeLang} />
 
       {conditions.length > 0 && (
         <div className="mt-4">
@@ -47,8 +46,6 @@ export const RateCard: React.FC<RateCardProps> = ({ rate, isStandard = false, sh
           </ul>
         </div>
       )}
-
-      <CitationsPanel citations={rate.citations} showNativeLang={showNativeLang} />
     </div>
   );
 };

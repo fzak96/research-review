@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Provision } from '@/types';
 import { RateCard } from './RateCard';
 import { AppliesToList } from './AppliesToList';
-import { CitationsPanel } from './CitationsPanel';
 
 interface ProvisionSectionProps {
   provision: Provision;
@@ -58,22 +57,7 @@ export const ProvisionSection: React.FC<ProvisionSectionProps> = ({ provision })
                   </h4>
                 </div>
 
-                <AppliesToList items={exemption.applies_to} />
-
-                {exemption.conditions && exemption.conditions.length > 0 && (
-                  <div className="mt-4">
-                    <p className="text-base font-semibold text-gray-900 mb-2">Conditions</p>
-                    <ul className="list-disc list-inside space-y-1 text-gray-700">
-                      {exemption.conditions.map((condition, i) => (
-                        <li key={i} className="leading-relaxed">
-                          {condition}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                <CitationsPanel citations={exemption.citations} showNativeLang={showNativeLang} />
+                <AppliesToList items={exemption.applies_to} showNativeLang={showNativeLang} />
               </div>
             ))}
           </div>

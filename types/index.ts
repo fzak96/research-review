@@ -31,12 +31,17 @@ export interface Vertical {
   tax_names: string[];
 }
 
+export interface AppliesToItem {
+  item: string;
+  conditions: string[];
+  citations: Citation[];
+}
+
 export interface Rate {
   rate_type: string;
   amount: number;
   unit: string;
-  applies_to: string[];
-  citations: Citation[];
+  applies_to: AppliesToItem[];
 }
 
 export interface StandardRate extends Rate {
@@ -52,11 +57,9 @@ export interface ReducedRate extends Rate {
 
 export interface Exemption {
   name: string;
-  applies_to: string[];
-  conditions: string[];
+  applies_to: AppliesToItem[];
   effective_start_date: string;
   effective_end_date: string;
-  citations: Citation[];
 }
 
 export interface Provision {
